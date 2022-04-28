@@ -1,0 +1,137 @@
+
+* {
+    font-family: Roboto, sans-serif;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box 
+
+}
+
+body {
+	line-height: 1.5;
+	color: black;
+}
+
+main {
+    max-width: 940px;
+    margin-left: auto;
+    margin-right: auto;
+  
+}
+
+main > ul, main ul li, main p, main h1, main h2, main h3, main h4 {
+    margin: 10px;
+}
+main * > a {
+    color: rgb(96, 122, 144);
+}
+main * > a:hover {
+    color: rgb(127, 163, 192);
+}
+  
+
+
+/* Header */
+
+.banner {
+    display:block;
+    text-align: center;
+    padding: 1rem;
+    margin: 0;
+    color:rgb(95, 98, 109);
+    background-color: rgb(177, 191, 202);
+}
+
+
+/* Index */
+
+.container {
+    display: grid;
+    grid-template-columns: repeat( auto-fit, minmax(350px, 1fr) );
+    margin: 10vh 10vw;
+    align-items: start;
+    grid-gap: 2rem;
+}
+
+.card {
+    position: relative;
+    background-color:white;
+    display: block;
+    overflow: hidden;
+    width: 350px;
+    box-shadow: 0 0.5rem 0.7rem -0.5px rgb(167, 167, 167);
+    transition: 0.5s;
+    animation-name: fade_in;
+    animation-duration: 1.5s;
+}
+@keyframes fade_in {
+    from {opacity: 0.7;}
+    to {opacity: 1;}
+}
+.card:hover {
+    box-shadow: 0 0.8rem 1.4rem -0.8px rgb(112, 112, 112);
+}
+
+.card_img {
+    display:block;
+    width: 350px;
+    height: 300px;
+    object-fit:cover;
+    position: relative;
+    transition: 0.5s;
+}
+
+.card:hover .card_img {
+    /* transform: brightness(0.6);  */
+    opacity: 0.7;
+}
+
+.card_title {
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    color:rgb(95, 98, 109);
+    background-color: rgb(177, 191, 202);
+    padding: 4%;
+    transition: 0.5s;
+}
+.card:hover .card_title {
+    color:rgb(35, 40, 53);
+
+}
+  
+
+.card_cap {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    font-size: 1rem;
+    text-align: left;
+    color: rgb(71, 71, 71);
+    background-color: rgba(219, 218, 218, 0.35);
+    top: 0;
+    left: 0;
+    height: 0;
+    width: 350px;
+    padding: 8%;
+    overflow-y: scroll;
+    transition: all 0.5s ease-out;
+    -moz-transition: all 0.5s ease-out;
+    -ms-transition: all 0.5s ease-out;
+    -webkit-transition: all 0.5s ease-out;
+    -o-transition: all 0.5s ease-out;
+}
+
+.card:hover .card_cap {
+    opacity: 1;
+    height: 300px;
+
+    /* transform:translateY(50%);
+    -moz-transform:translateY(50%);
+    -ms-transform:translateY(50%);
+    -webkit-transform:translateY(50%);
+    -o-transform:translateY(50%); */
+}
+
+
