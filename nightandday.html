@@ -10,24 +10,417 @@
 <!-- <script src="/js/jquery.js"></script> -->
 <script src="/js/jquery.js"></script>
 
+
+<style>
+.night {
+  overflow: hidden;
+  /* background-color: #DADADA; */
+  color: #565656;
+  width: 30rem;
+  height: 20rem;
+  margin: auto;
+
+}
+.wrapper {
+  perspective: 30rem;
+  margin: auto;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  width: 26;
+  height: 18rem;
+  position: relative;
+  padding: 1rem;
+
+}
+.wrapper:hover .sky {
+    transform: rotateX(10deg);
+}
+
+.sky {
+  position: relative;
+  /* margin: auto; */
+  /* top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; */
+  width: 26rem;
+  height: 18rem;
+  border-radius: 0.7rem;
+  background: linear-gradient(#1E4957, #857A99 85%); 
+  box-shadow: 0.2rem 0.2rem 0.2rem #565656;
+  transition: transform 1s;
+}
+
+
+/* moon */
+.moon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #F0E9E5;
+  box-shadow: 0 0 1.5rem 0.1rem #FFFBF9;
+  position: absolute;
+  z-index: 51;
+  left: 6rem;
+  top: 3rem;
+  animation: moonlight 5s ease-in-out infinite;
+}
+/* moon craters */
+.moon:before, .moon:after {
+  content: '';
+  width: 0.5rem;
+  height: 0.8rem;
+  transform: rotate(30deg);
+  border-radius: 50%;
+  background: #CDCDCC;
+  top: 0.5rem;
+  left: 0.5rem;
+  position: absolute; 
+}
+.moon:after {
+  width: 1rem;
+  height: 1rem;
+  top: 0.4rem;
+  left: 1.3rem;
+}
+/* moonlight intensity */
+@keyframes moonlight {
+  0%, 25%, 50%, 75%,100% { box-shadow: 0 0 1rem 0.1rem #FFFBF9; }
+  12%, 36%, 64%, 86%  {  box-shadow: 0 0 0.8rem 0.09rem #FFFBF9;}
+}
+
+/* clouds */
+.cloud {
+	width: 5rem;
+  height: 1.8rem;
+  z-index:53;
+  opacity: 0.7;
+  position: relative; 
+	background: #BFBFBF;
+	border-radius: 1rem;	
+  box-shadow: inset -0.2rem -0.2rem 0.2rem 0.1rem #A1A0A0;
+}
+.cloud:before, .cloud:after {
+	content: "";
+	position: absolute; 
+	background: #BFBFBF;
+  z-index:52;
+	width: 2rem;
+  height: 1.8rem;
+  top: -0.7rem;
+  left: 0.8rem;
+	border-radius:1rem;	
+	transform: rotate(50deg);
+  box-shadow: 0 0 0.1rem #BFBFBF;
+}
+.cloud:after {
+	width: 2.5rem;
+  height: 2.5rem;
+	top: -1.2rem;
+  left: 2rem;
+  right: 1rem;
+  border-radius:50%;	
+  transform: rotate(50deg);
+  box-shadow: 0 0 0.1rem #BFBFBF;
+
+}
+
+.cloud0 {
+  z-index: 55;
+  animation: c0 10s ease-in-out infinite;
+}
+@keyframes c0 {
+  0%, 25%, 50%, 75%, 100% {top: 6rem; left: 3rem; }
+  12%, 36%, 62%, 86% { top: 5.5rem;}
+}
+
+
+.cloud1 {
+  top: 5rem;
+  left: 14rem;
+  z-index: 55;
+  animation: c1 10s ease-in-out infinite;
+}
+@keyframes c1 {
+  0%, 25%, 50%, 75%, 100% {top: 5rem; left: 14rem; }
+  12%, 36%, 62%, 86% { top: 5.5rem;}
+}
+
+.cloud2 {
+  top: 0rem;
+  left: 18rem;
+  z-index: 55;
+  animation: c2 10s ease-in-out infinite;
+}
+@keyframes c2 {
+  0%, 20%, 40%, 60%, 80%, 100% {top: 0rem; left: 18rem; }
+  10%, 30%, 50%, 70%, 90% { top: -0.5rem;}
+}
+
+/* plain */
+
+.plain {
+  width: 100%;
+  height: 25%;
+  border-radius: 15% 15% 0.7rem 0.7rem;
+  bottom: 0;
+  position: absolute;
+  z-index: 101;
+  background: linear-gradient(#4C565F, #2B3136 85%); 
+
+}
+
+/* mountains */
+
+.mountain {
+  content:'';
+  position: absolute;
+  z-index: 55;
+  bottom: 3rem;
+  left: 2rem;
+  border-top: 0rem solid transparent;
+  border-right: 3rem solid transparent;
+  border-bottom: 5rem solid #4C5F5F;
+  border-left: 3rem solid transparent;
+}
+
+/* mountain side */
+.mountain:before {
+  content:'';
+  position:absolute;
+  z-index: 56;
+  border-top: 0rem solid transparent;
+  border-right: 2.5rem solid transparent;
+  border-bottom: 5rem solid #2F3B3B;
+  border-left: 0rem solid transparent;
+  transform-origin: top right;
+  transform: skewX(20deg);
+}
+/* individual peaks */
+.mt2 {
+  bottom: 2rem;
+  left: 4rem;
+  z-index: 57;
+  transform: skewX(-12deg);
+}
+.mt3 {
+  bottom: 2.2rem;
+  left: 6rem;
+  z-index: 57;
+  transform: skewX(5deg);
+}
+
+.mt4 {
+  bottom: 1.5rem;
+  left: 4rem;
+  z-index: 56;
+  transform: skewX(30deg);
+}
+.mt6 {
+  bottom: 3rem;
+  left: 18rem;
+  z-index: 57;
+  transform-origin: top right;
+  transform: skewX(-10deg);
+}
+.mt7 {
+  bottom: 2.5rem;
+  left: 16rem;
+  z-index: 56;
+  transform: skewX(5deg);
+}
+
+/* comet */
+
+.comets_all {
+  position: absolute;
+  transform:rotate(40deg);
+  width: 100%;
+  height: 150%;
+}
+
+.comet {
+  position: absolute;
+  height: 0.08rem;
+  border-radius: 2rem 1rem 1rem 2rem;
+  background: linear-gradient(to left, #F8F9E3, #1E4957);
+  top: 8rem;
+  left: 1.5rem;
+  animation: comet1 5s ease-in-out infinite;
+  animation-delay: 1s;
+}
+@keyframes comet1 {
+    0%, 100% {transform: translateX(0); width: 0; opacity: 0}
+  5% {width: 5rem; opacity: 0.7;}
+  20% {width: 0; transform:translateX(20rem); opacity: 0;}
+}
+
+.com2 {
+  top: 16rem;
+  left: -2rem;
+  background: linear-gradient(to left, #F8F9E3, #857A99);
+  animation-delay: 2.5s;
+}
+
+
+/* blinking stars */
+
+@keyframes starry1 {
+  58% { opacity: 1; transform: scale(1);}
+  62% { opacity: 1; transform: scale(2);}
+  66% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry2 {
+  19% { opacity: 1; transform: scale(1);}
+  23% { opacity: 1; transform: scale(3);}
+  27% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry3 {
+  7% { opacity: 1; transform: scale(1);}
+  10% { opacity: 1; transform: scale(2);}
+  14% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry4 {
+  67% { opacity: 1; transform: scale(1);}
+  71% { opacity: 1; transform: scale(3);}
+  75% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry5 {
+  28% { opacity: 1; transform: scale(1);}
+  31% { opacity: 1; transform: scale(2);}
+  34% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry6 {
+  85% { opacity: 1; transform: scale(1);}
+  89% { opacity: 1; transform: scale(3);}
+  93% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry7 {
+  48% { opacity: 1; transform: scale(1);}
+  52% { opacity: 1; transform: scale(3);}
+  56% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry8 {
+  38% { opacity: 1; transform: scale(1);}
+  41% { opacity: 1; transform: scale(2);}
+  44% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry9 {
+  63% { opacity: 1; transform: scale(1);}
+  67% { opacity: 1; transform: scale(3);}
+  71% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry10 {
+  74% { opacity: 1; transform: scale(1);}
+  78% { opacity: 1; transform: scale(2);}
+  82% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry11 {
+  91% { opacity: 1; transform: scale(1);}
+  95% { opacity: 1; transform: scale(2);}
+  99% { opacity: 1; transform: scale(1);}
+}
+
+</style>
+
+
+
+
+
+
 </head>
 <body>
 
 <div id="nav"></div>
 
 <main>
-    <iframe height="500px" style="width: 100%;" scrolling="no" title="night loading screen" src="https://codepen.io/gyhn2/embed/qBxZQrw?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-        See the Pen <a href="https://codepen.io/gyhn2/pen/qBxZQrw">
-        night loading screen</a> by gyhn2 (<a href="https://codepen.io/gyhn2">@gyhn2</a>)
-        on <a href="https://codepen.io">CodePen</a>.
-      </iframe>
+    <h1>CSS: Night Sky Animation</h1>
+    <h2>Demo:</h2>
+<div class="night">
+    <div class="wrapper">
+        <div class="sky">
+           <div class="stars" id="stars"></div>
+           <div class="comets_all">
+                <div class="comet"></div>
+                <div class="comet com2"></div>
+            </div>
+            <div class="moon"></div>
+            <div class="cloud cloud0"></div>
+            <div class="cloud cloud1"></div>
+            <div class="cloud cloud2"></div>
+            <div class="mountain"></div>
+            <div class="mountain mt2"></div>
+            <div class="mountain mt3"></div>
+            <div class="mountain mt4"></div>
+            <div class="mountain mt6"></div>
+            <div class="mountain mt7"></div>
+              <div class="plain">
+            </div>
+          </div>
+        </div>
+    </div>   
+        
+        
+<p>Place the cursor over the image to see the effect.</p>
+<h2>Codepen:</h2>
 
-      <iframe height="500px" style="width: 100%;" scrolling="no" title="Day and night" src="https://codepen.io/gyhn2/embed/qBxbpZq?default-tab=result" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-        See the Pen <a href="https://codepen.io/gyhn2/pen/qBxbpZq">
-        Day and night</a> by gyhn2 (<a href="https://codepen.io/gyhn2">@gyhn2</a>)
-        on <a href="https://codepen.io">CodePen</a>.
-      </iframe>
+    <div class="codepen_embed">
+    <p class="codepen" data-height="400" data-default-tab="result" data-slug-hash="qBxZQrw" data-user="gyn2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+        <span>See the Pen <a href="https://codepen.io/gyn2/pen/qBxZQrw">
+        night</a> by GYN (<a href="https://codepen.io/gyn2">@gyn2</a>)
+        on <a href="https://codepen.io">CodePen</a>.</span>
+      </p>
+      <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+    </div>
+
 </main>
 
 </body>
+<script type="text/javascript">
+
+    // populate stars
+    const s = document.getElementById("stars");
+    for (i=0; i<50; i++) {
+    const st = document.createElement("div");
+      // st.classList.add("star-"+i.toString());
+      const stard = Math.random() * 0.05 + 0.1;
+      st.style.width = stard.toString() + "rem";
+      st.style.height = stard.toString() + "rem";
+      st.style.borderRadius = "50%";
+      st.style.backgroundColor = "#F8F9E3";
+      st.style.boxShadow = "0 0 0.3rem 0.05rem #FFFBF9";
+      let y = Math.random() * 17.6+0.2;
+      let x = Math.random() * 25.6+0.2;
+      st.style.top = y.toString()+"rem";
+      st.style.left = x.toString() + "rem";
+      st.style.position = "absolute";
+      if (i==1) { st.style.animation = "starry1 5s linear infinite"; } 
+      else if (i==2) { st.style.animation = "starry2 5s linear infinite"; } 
+      else if (i==3) { st.style.animation = "starry3 5s linear infinite"; } 
+      else if (i==4) { st.style.animation = "starry4 5s linear infinite"; } 
+      else if (i==5) { st.style.animation = "starry5 5s linear infinite"; } 
+      else if (i==6) { st.style.animation = "starry6 5s linear infinite"; } 
+      else if (i==7) { st.style.animation = "starry7 5s linear infinite"; }
+      else if (i==8) { st.style.animation = "starry8 5s linear infinite"; }
+      else if (i==9) { st.style.animation = "starry9 5s linear infinite"; }
+      else if (i==10) { st.style.animation = "starry10 5s linear infinite"; }
+      else if (i==11) { st.style.animation = "starry10 5s linear infinite"; }
+      else { st.style.animation = "starry 5s linear infinite";  }
+      
+      s.appendChild(st);
+    }
+    
+    </script>
 </html>

@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Portfolio</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<script src="https://code.jquery.com/jquery-latest.min.js"></script>
+<!-- <script src="/js/jquery.js"></script> -->
+<script src="/js/jquery.js"></script>
+
+
+<style>
+    .day {
+        overflow: hidden;
+  /* background-color: #DADADA; */
+  color: #565656;
+  width: 30rem;
+  height: 20rem;
+  margin: auto;
+
+}
+
+.sky {
+  position: absolute;
+  margin: auto;
+  /* top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0; */
+  width: 26rem;
+  height: 18rem;
+  border-radius: 0.7rem;
+  box-shadow: 0.2rem 0.2rem 0.2rem #565656;
+  animation: skycolour 10s linear infinite; 
+}
+@keyframes skycolour { 
+  0% { background:#1E4957; }
+  5% { background: #ACCFCE; }
+  42% { background: #ACCFCE; }
+  50% { background: #AB6C5D; }
+  60% { background: #1E4957; }
+  100% { background: #1E4957; }
+}
+/* background: linear-gradient(#1E4957, #BEB5CE 85%); 
+ */
+.sun {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  position: absolute;
+  z-index: 51;
+  left: 12rem;
+  top: 12rem;
+  background: radial-gradient(#FFE1BC, #FFC8A0);
+  animation: sunmove 10s linear infinite; 
+  box-shadow:
+    0 0 0.5rem 0.5rem #FFF2CD, 
+    0 0 1.8rem 0.5rem #FFDF81;
+}
+
+@keyframes sunmove {
+  0% { transform: rotate(180deg) translateX(10rem) ; opacity: 1  }
+  42% { transform: rotate(340deg) translateX(10rem); opacity: 1; background-color:#FFC8A0;  box-shadow: 0 0 0.5rem 0.5rem #FFF2CD, 0 0 1.8rem 0.5rem #FFDF81;  }
+  50%  { transform: rotate(370deg) translateX(10rem) ; opacity: 1; background-color: #FE8226; box-shadow: 0 0 0.5rem 0.5rem #FF966C,  0 0 1.8rem 0.5rem #F07544; }
+  55% { transform: rotate(370deg) translateX(10rem); opacity: 0; }
+  100% { transform: rotate(360deg) translateX(10rem); opacity: 0; }
+}
+
+.moon {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background-color: #F0E9E5;
+  box-shadow: 0 0 1.5rem 0.1rem #FFFBF9;
+  position: absolute;
+  z-index: 51;
+  left: 12rem;
+  top: 12rem;
+  animation: moonmove 10s linear infinite; 
+}
+.moon:before, .moon:after {
+  content: '';
+  width: 0.5rem;
+  height: 0.8rem;
+  transform: rotate(30deg);
+  border-radius: 50%;
+  background: #CDCDCC;
+  top: 0.5rem;
+  left: 0.5rem;
+  position: absolute; 
+}
+.moon:after {
+  width: 1rem;
+  height: 1rem;
+  top: 0.4rem;
+  left: 1.3rem;
+}
+
+@keyframes moonmove {
+  0% { transform: rotate(180deg) translateX(10rem) ; opacity: 0; }
+  50% { transform: rotate(180deg) translateX(10rem) ; opacity: 0; }
+  52%  { transform: rotate(180deg) translateX(10rem) ; opacity: 1; }
+  100% { transform: rotate(370deg) translateX(10rem) ; opacity: 1;  }
+}
+
+.cloud {
+	width: 5rem;
+  height: 2rem;
+  opacity: 0.5;
+  position: relative; 
+	background: #fff;
+	border-radius: 1rem;	
+  box-shadow: 0 0 0.1rem #fff;
+}
+.cloud:before, .cloud:after {
+	content: "";
+	position: absolute; 
+	background: #fff;
+	width: 4rem;
+  height: 2rem;
+  top: -0.3rem;
+  left: 0.5rem;
+	border-radius:1rem;	
+	transform: rotate(50deg);
+  box-shadow: 0 0 0.1rem #fff;
+}
+.cloud:after {
+	width: 2rem;
+  height: 4rem;
+	top: -1rem;
+  left: 1.5rem;
+  right: 1.3rem;
+  transform: rotate(50deg);
+  box-shadow: 0 0 0.1rem #fff;
+
+}
+
+.cloud0 {
+  z-index: 55;
+  animation: c0 10s ease-in-out infinite;
+}
+@keyframes c0 {
+  0%, 25%, 50%, 75%, 100% {top: 6rem; left: 3rem; }
+  12%, 36%, 62%, 86% { top: 5.5rem;}
+}
+
+
+.cloud1 {
+  top: 5rem;
+  left: 14rem;
+  z-index: 55;
+  animation: c1 10s ease-in-out infinite;
+}
+@keyframes c1 {
+  0%, 25%, 50%, 75%, 100% {top: 5rem; left: 14rem; }
+  12%, 36%, 62%, 86% { top: 5.5rem;}
+}
+
+.cloud2 {
+  top: 0rem;
+  left: 18rem;
+  z-index: 55;
+  animation: c2 10s ease-in-out infinite;
+}
+@keyframes c2 {
+  0%, 20%, 40%, 60%, 80%, 100% {top: 0rem; left: 18rem; }
+  10%, 30%, 50%, 70%, 90% { top: -0.5rem;}
+}
+
+.plain {
+  width: 100%;
+  height: 25%;
+  border-radius: 15% 15% 0.7rem 0.7rem;
+  bottom: 0;
+  position: absolute;
+  z-index: 101;
+  animation: plaincolour 10s linear infinite; 
+}
+
+@keyframes plaincolour {
+  0% { background: #4E6C2E; }
+  5% { background: #94B294; }
+  42% { background: #94B294; }
+  50% { background: #B2A094; }
+  60% { background: #4E6C2E; }
+  100% { background: #4E6C2E;}
+}
+
+.mountain {
+  content:'';
+  position: absolute;
+  z-index: 55;
+  bottom: 3rem;
+  left: 2rem;
+  border-top: 0rem solid transparent;
+  border-right: 3rem solid transparent;
+  border-bottom: 5rem solid #41804C;
+  border-left: 3rem solid transparent;
+  animation: mtcolor 10s linear infinite;
+}
+
+.mountain:before {
+  content:'';
+  position:absolute;
+  z-index: 56;
+  border-top: 0rem solid transparent;
+  border-right: 2.5rem solid transparent;
+  border-bottom: 5rem solid #296634;
+  border-left: 0rem solid transparent;
+  transform-origin: top right;
+  transform: skewX(20deg);
+  animation: mtshadow 10s linear infinite;
+}
+.mt2 {
+  bottom: 2rem;
+  left: 4rem;
+  z-index: 57;
+}
+.mt3 {
+  bottom: 3.2rem;
+  left: 20rem;
+  z-index: 57;
+  transform-origin: top right;
+  transform: skewX(-18deg);
+}
+
+@keyframes mtcolor {
+  0% {border-bottom: 5rem solid #36673E;}
+  5% {border-bottom: 5rem solid #41804C;}
+  42% {border-bottom: 5rem solid #41804C;}
+  50% {border-bottom: 5rem solid #807841;}
+  60% {border-bottom: 5rem solid #36673E;}
+  100% {border-bottom: 5rem solid #36673E;}
+}
+
+@keyframes mtshadow {
+  0% {border-bottom: 5rem solid #15321A;}
+  5% {border-bottom: 5rem solid #296634;}
+  42% {border-bottom: 5rem solid #296634;}
+  50% {border-bottom: 5rem solid #576629;}
+  60% {border-bottom: 5rem solid #15321A;}
+  100% {border-bottom: 5rem solid #15321A;}
+}
+
+.rainbow {
+  width: 5rem;
+  height: 3rem;
+  border-radius: 2.5rem 2.5rem 0 0;
+  position: absolute;
+  bottom: 1.4rem;
+  left:9rem;
+  box-shadow:
+    0 0 0 0.2rem #BDA5E2,
+    0 0 0 0.4rem #A5B7E2,
+    0 0 0 0.6rem #A5D7E2,
+    0 0 0 0.8rem #A5E2AC,
+    0 0 0 1rem #E2DFA5,
+    0 0 0 1.2rem #E2C3A5,
+    0 0 0 1.4rem #E2A5A5;
+  animation: rbowmove 10s ease-in-out infinite;
+}
+
+@keyframes rbowmove {
+  0%, 5%, 100% {bottom: 1.4rem; opacity: 0}
+  15% {bottom: 3.4rem; opacity: 0.7}
+  25% {bottom: 3.4rem; opacity: 0.7}
+  35% {bottom: 1.4rem; opacity: 0;}
+  
+}
+
+/* stars */
+
+@keyframes starry { 
+  0% { opacity: 0; }
+  45% { opacity: 0; }
+  50% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+/* blinking stars */
+
+@keyframes starry1 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  59% { opacity: 1; transform: scale(1);}
+  62% { opacity: 1; transform: scale(2);}
+  64% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry2 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  78% { opacity: 1; transform: scale(1);}
+  80% { opacity: 1; transform: scale(3);}
+  82% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry3 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  55% { opacity: 1; transform: scale(1);}
+  57% { opacity: 1; transform: scale(2);}
+  59% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry4 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  69% { opacity: 1; transform: scale(1);}
+  71% { opacity: 1; transform: scale(3);}
+  73% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry5 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  74% { opacity: 1; transform: scale(1);}
+  77% { opacity: 1; transform: scale(2);}
+  79% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry6 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  86% { opacity: 1; transform: scale(1);}
+  89% { opacity: 1; transform: scale(3);}
+  92% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry7 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  52% { opacity: 1; transform: scale(1);}
+  54% { opacity: 1; transform: scale(3);}
+  56% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry8 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 99% { opacity: 1; }
+  91% { opacity: 1; transform: scale(1);}
+  93% { opacity: 1; transform: scale(2);}
+  95% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry9 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  65% { opacity: 1; transform: scale(1);}
+  67% { opacity: 1; transform: scale(3);}
+  68% { opacity: 1; transform: scale(1);}
+}
+
+@keyframes starry10 {
+  0%, 45%, 100% { opacity: 0; }
+  50%, 90% { opacity: 1; }
+  81% { opacity: 1; transform: scale(1);}
+  83% { opacity: 1; transform: scale(2);}
+  85% { opacity: 1; transform: scale(1);}
+}
+</style>
+
+
+
+
+</head>
+<body>
+
+<div id="nav"></div>
+
+<main>
+    <h1>CSS: Day to night</h1>
+    <h2>Demo:</h2>
+    <div class="day">
+    <div class="sky">
+        <div class="stars" id="stars"></div>
+           <div class="sun"></div>
+           <div class="moon"></div>
+          <div class="cloud cloud0"></div>
+              <div class="cloud cloud1"></div>
+              <div class="cloud cloud2"></div>
+         <div class="rainbow"></div>
+         <div class="mountain"></div>
+         <div class="mountain mt2"></div>
+         <div class="mountain mt3"></div>
+           <div class="plain">
+         </div>
+       </div>
+    </div>   
+
+     
+        
+<h2>Codepen:</h2>
+
+
+    <div class="codepen_embed">
+        <p class="codepen" data-height="400" data-default-tab="result" data-slug-hash="qBxbpZq" data-user="gyn2" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+            <span>See the Pen <a href="https://codepen.io/gyn2/pen/qBxbpZq">
+            Day and night</a> by GYN (<a href="https://codepen.io/gyn2">@gyn2</a>)
+            on <a href="https://codepen.io">CodePen</a>.</span>
+          </p>
+          <script async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>    
+        </div>
+</main>
+
+</body>
+<script type="text/javascript">
+const s = document.getElementById("stars");
+for (i=0; i<40; i++) {
+const st = document.createElement("div");
+  // st.classList.add("star-"+i.toString());
+  const stard = Math.random() * 0.05 + 0.1;
+  st.style.width = stard.toString() + "rem";
+  st.style.height = stard.toString() + "rem";
+  st.style.borderRadius = "50%";
+  st.style.backgroundColor = "#F8F9E3";
+  st.style.boxShadow = "0 0 0.3rem 0.05rem #FFFBF9";
+  let y = Math.random() * 17.7+0.15;
+  let x = Math.random() * 25.7+0.15;
+  st.style.top = y.toString()+"rem";
+  st.style.left = x.toString() + "rem";
+  st.style.position = "absolute";
+  if (i%35==1) { st.style.animation = "starry1 10s linear infinite"; } 
+  else if (i%35==2) { st.style.animation = "starry2 10s linear infinite"; } 
+  else if (i%35==3) { st.style.animation = "starry3 10s linear infinite"; } 
+  else if (i%35==4) { st.style.animation = "starry4 10s linear infinite"; } 
+  else if (i%35==5) { st.style.animation = "starry5 10s linear infinite"; } 
+  else if (i%35==6) { st.style.animation = "starry6 10s linear infinite"; } 
+  else if (i%35==7) { st.style.animation = "starry7 10s linear infinite"; }
+  else if (i%35==8) { st.style.animation = "starry8 10s linear infinite"; }
+  else if (i%35==9) { st.style.animation = "starry9 10s linear infinite"; }
+  else if (i%35==10) { st.style.animation = "starry10 10s linear infinite"; }
+  else { st.style.animation = "starry 10s linear infinite";  }
+    s.appendChild(st);
+}
+    
+    </script>
+</html>
