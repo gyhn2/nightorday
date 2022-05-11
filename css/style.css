@@ -1,16 +1,20 @@
 
 * {
-    font-family: Roboto, sans-serif;
+    /* font-family: Roboto, sans-serif; */
+    font-family: 'Montserrat', sans-serif;
     text-decoration: none;
     margin: 0;
     padding: 0;
-    box-sizing: border-box 
+    box-sizing: border-box;
+    font-weight: 100;
 
 }
+@import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,700');
+
 
 body {
 	line-height: 1.5;
-	color: black;
+	color:rgb(71, 71, 71)
 }
 
 main {
@@ -80,6 +84,7 @@ main * > a:hover {
     object-fit:cover;
     position: relative;
     transition: 0.5s;
+    overflow:hidden;
 }
 
 .card:hover .card_img {
@@ -135,3 +140,8 @@ main * > a:hover {
 }
 
 
+
+/* codepen embed */
+.codepen_embed {
+    width: 500px; position:static; margin: auto; padding: 1rem; overflow: hidden;
+}
